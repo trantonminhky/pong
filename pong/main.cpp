@@ -18,6 +18,7 @@ int main() {
 	InitAudioDevice();
 	
 	srand(time(NULL));
+	SetExitKey(KEY_NULL);
 
 	Music backgroundMusic = LoadMusicStream("./assets/vivaldi.mp3");
 	hitsoundWeak = LoadSound("./assets/hit_weak.wav");
@@ -41,6 +42,7 @@ int main() {
 		ClearBackground(BLACK);
 		switch (CurrentState) {
 		case GameState::MENU:
+			resetState();
 			updateMenuScreen(CurrentState);
 			drawMenuScreen();
 			break;
@@ -51,22 +53,22 @@ int main() {
 			break;
 
 		case GameState::SINGLEPLAYER_EASY: // singleplayer easy
-			updateSingleplayerScreen(50);
+			updateSingleplayerScreen(50, CurrentState);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_MEDIUM: // singleplayer medium
-			updateSingleplayerScreen(30);
+			updateSingleplayerScreen(30, CurrentState);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_HARD: // singleplayer hard
-			updateSingleplayerScreen(10);
+			updateSingleplayerScreen(10, CurrentState);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::MULTIPLAYER: // multiplayer
-			updateMultiplayerScreen();
+			updateMultiplayerScreen(CurrentState);
 			drawMultiplayerScreen();
 			break;
 

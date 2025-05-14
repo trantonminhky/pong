@@ -5,6 +5,20 @@ bool isWithinX(int curX, int windowSizeX) {
 	return (curX >= 0 && curX <= windowSizeX - 20); // accounts for rectangle size
 }
 
+void resetState() {
+	countdown = 180;
+
+	velocityX = 0; // initial ball velocity
+	velocityY = 8;
+
+	homeScore = 0;
+	visitorScore = 0;
+
+	ball = { 590, 490, 20, 20 };
+	home = { 525, 900, 150, 10 };
+	visitor = { 525, 100, 150, 10 };
+}
+
 Rectangle singleplayerButton = { 350, 500, 500, 100 };
 Rectangle multiplayerButton = { 350, 700, 500, 100 };
 

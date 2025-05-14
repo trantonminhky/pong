@@ -4,7 +4,12 @@
 #include "singleplayer.h"
 #include "multiplayer.h"
 
-void updateMultiplayerScreen() {
+void updateMultiplayerScreen(GameState& CurrentState) {
+	if (IsKeyPressed(KEY_ESCAPE)) {
+		CurrentState = GameState::MENU;
+		return;
+	}
+
 	if (countdown < 0) {
 		if (IsKeyDown(KEY_A)) home.x -= home.x >= 0 ? 10 : 0; // A - move left, D - move right
 		if (IsKeyDown(KEY_D)) home.x += home.x + home.width <= 1200 ? 10 : 0;

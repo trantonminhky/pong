@@ -36,3 +36,4 @@ extern Rectangle visitor;
 extern GameState CurrentState;
 
 bool isWithinX(int curX, int windowSizeX);
+void resetState();

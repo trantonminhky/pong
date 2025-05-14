@@ -3,8 +3,13 @@
 #include "helper.h"
 #include "singleplayer.h"
 
-void updateSingleplayerScreen(int failureRate) {
+void updateSingleplayerScreen(int failureRate, GameState &CurrentState) {
 	int random = rand() % 100 + 1;
+	if (IsKeyPressed(KEY_ESCAPE)) {
+		CurrentState = GameState::MENU;
+		return;
+	}
+
 	if (countdown < 0) {
 		if (IsKeyDown(KEY_A)) home.x -= home.x >= 0 ? 10 : 0; // A - move left, D - move right
 		if (IsKeyDown(KEY_D)) home.x += home.x + home.width <= 1200 ? 10 : 0;
