@@ -195,6 +195,8 @@
     <Media Include="assets\explosion.wav" />
     <Media Include="assets\hit_strong.wav" />
     <Media Include="assets\hit_weak.wav" />
+    <Media Include="assets\menu_hit_strong.wav" />
+    <Media Include="assets\menu_hit_weak.wav" />
     <Media Include="assets\vivaldi.mp3" />
   </ItemGroup>
   <ItemGroup>

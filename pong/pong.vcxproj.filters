@@ -64,6 +64,12 @@
     <Media Include="assets\hit_strong.wav">
       <Filter>Resource Files</Filter>
     </Media>
+    <Media Include="assets\menu_hit_weak.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\menu_hit_strong.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\pixil-frame-0.png">

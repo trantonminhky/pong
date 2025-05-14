@@ -10,6 +10,8 @@ enum class GameState {
 };
 extern Sound hitsoundWeak;
 extern Sound hitsoundStrong;
+extern Sound hitsoundMenuWeak;
+extern Sound hitsoundMenuStrong;
 extern Sound explosion;
 
 extern Rectangle singleplayerButton;
