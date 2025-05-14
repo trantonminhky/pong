@@ -4,9 +4,18 @@
 #include "helper.h"
 
 void updateDifficultyMenuScreen(GameState& CurrentState) {
-	if (CheckCollisionPointRec(GetMousePosition(), easyButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) CurrentState = GameState::SINGLEPLAYER_EASY;
-	if (CheckCollisionPointRec(GetMousePosition(), normalButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) CurrentState = GameState::SINGLEPLAYER_MEDIUM;
-	if (CheckCollisionPointRec(GetMousePosition(), hardButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) CurrentState = GameState::SINGLEPLAYER_HARD;
+	if (CheckCollisionPointRec(GetMousePosition(), easyButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		CurrentState = GameState::SINGLEPLAYER_EASY;
+		PlaySound(hitsoundMenuStrong);
+	}
+	if (CheckCollisionPointRec(GetMousePosition(), normalButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		CurrentState = GameState::SINGLEPLAYER_MEDIUM;
+		PlaySound(hitsoundMenuStrong);
+	}
+	if (CheckCollisionPointRec(GetMousePosition(), hardButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		CurrentState = GameState::SINGLEPLAYER_HARD;
+		PlaySound(hitsoundMenuStrong);
+	}
 }
 
 void drawDifficultyMenuScreen() {

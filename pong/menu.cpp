@@ -4,8 +4,15 @@
 #include "helper.h"
 
 void updateMenuScreen(GameState &CurrentState) {
-	if (CheckCollisionPointRec(GetMousePosition(), singleplayerButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) CurrentState = GameState::DIFFICULTY_MENU;
-	if (CheckCollisionPointRec(GetMousePosition(), multiplayerButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) CurrentState = GameState::MULTIPLAYER;
+	if (CheckCollisionPointRec(GetMousePosition(), singleplayerButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		CurrentState = GameState::DIFFICULTY_MENU;
+		PlaySound(hitsoundMenuWeak);
+	}
+
+	if (CheckCollisionPointRec(GetMousePosition(), multiplayerButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		CurrentState = GameState::MULTIPLAYER;
+		PlaySound(hitsoundMenuStrong);
+	}
 }
 
 void drawMenuScreen() {
