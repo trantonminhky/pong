@@ -1,3 +1,5 @@
 #pragma once
+#include "helper.h"
 
-int launchMenu();
+void updateMenuScreen(GameState& CurrentState);
+void drawMenuScreen();

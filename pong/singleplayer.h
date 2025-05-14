@@ -1,3 +1,4 @@
 #pragma once
 
-void launchSingleplayer(int failureRate);
+void updateSingleplayerScreen(int failureRate);
+void drawSingleplayerScreen();

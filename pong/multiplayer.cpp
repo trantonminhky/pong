@@ -1,80 +1,71 @@
 #include <raylib.h>
 #include <string>
 #include "helper.h"
+#include "singleplayer.h"
+#include "multiplayer.h"
 
-void launchMultiplayer() {
-	int countdown = 180;
+void updateMultiplayerScreen() {
+	if (countdown < 0) {
+		if (IsKeyDown(KEY_A)) home.x -= home.x >= 0 ? 10 : 0; // A - move left, D - move right
+		if (IsKeyDown(KEY_D)) home.x += home.x + home.width <= 1200 ? 10 : 0;
+		if (IsKeyDown(KEY_LEFT)) visitor.x -= visitor.x >= 0 ? 10 : 0;
+		if (IsKeyDown(KEY_RIGHT)) visitor.x += visitor.x + visitor.width <= 1200 ? 10 : 0;
 
-	int velocityX = 0; // initial ball velocity
-	int velocityY = 5;
-
-	int homeScore = 0;
-	int visitorScore = 0;
-
-	Rectangle ball = { 590, 490, 20, 20 };
-	Rectangle home = { 525, 900, 150, 10 };
-	Rectangle visitor = { 525, 100, 150, 10 };
-
-	while (!WindowShouldClose()) {
-		if (countdown < 0) {
-			if (IsKeyDown(KEY_A)) home.x -= home.x >= 0 ? 10 : 0; // A - move left, D - move right
-			if (IsKeyDown(KEY_D)) home.x += home.x + home.width <= 1200 ? 10 : 0;
-			if (IsKeyDown(KEY_LEFT)) visitor.x -= visitor.x >= 0 ? 10 : 0;
-			if (IsKeyDown(KEY_RIGHT)) visitor.x += visitor.x + visitor.width <= 1200 ? 10 : 0;
-
-			if (!isWithinX(ball.x, 1200)) velocityX *= -1;
-			if (CheckCollisionRecs(ball, home) || CheckCollisionRecs(ball, visitor)) {
-				if (CheckCollisionRecs(ball, home)) velocityY += 1;
-				else velocityY -= 1;
-				velocityY *= -1;
-				velocityX = (rand() % 21) - 5;
-			}
-
-			if (ball.y < 0) { // home wins
-				ball.x = 590;
-				ball.y = 490;
-				home.x = 525;
-				home.y = 900;
-				visitor.x = 525;
-				visitor.y = 100;
-				velocityX = 0;
-				velocityY = -5;
-
-				homeScore++;
-				countdown = 180;
-			}
-			else if (ball.y + ball.height > 1000) {
-				ball.x = 590;
-				ball.y = 490;
-				home.x = 525;
-				home.y = 900;
-				visitor.x = 525;
-				visitor.y = 100;
-				velocityX = 0;
-				velocityY = 5;
-
-				visitorScore++;
-				countdown = 180;
-			}
-
-			ball.x += velocityX;
-			ball.y += velocityY;
+		if (!isWithinX(ball.x, 1200)) {
+			velocityX *= -1;
+			PlaySound(hitsoundWeak);
 		}
-		else {
-			countdown--;
+		if (CheckCollisionRecs(ball, home) || CheckCollisionRecs(ball, visitor)) {
+			velocityY *= -1;
+			velocityX = (rand() % 21) - 10;
+
+			if (abs(velocityX) >= 15) PlaySound(hitsoundStrong);
+			else PlaySound(hitsoundWeak);
 		}
 
-		BeginDrawing();
-		ClearBackground(BLACK);
+		if (ball.y < 0) { // home wins
+			ball.x = 590;
+			ball.y = 490;
+			home.x = 525;
+			home.y = 900;
+			visitor.x = 525;
+			visitor.y = 100;
+			velocityX = 0;
+			velocityY = -8;
 
-		DrawRectangleRec(home, WHITE); // draw home paddle
-		DrawRectangleRec(visitor, WHITE); // draw visitor paddle
-		DrawText(std::to_string(homeScore).c_str(), 600, 950, 50, WHITE);
-		DrawText(std::to_string(visitorScore).c_str(), 600, 50, 50, WHITE);
+			homeScore++;
+			countdown = 180;
+			PlaySound(explosion);
+		}
+		else if (ball.y + ball.height > 1000) {
+			ball.x = 590;
+			ball.y = 490;
+			home.x = 525;
+			home.y = 900;
+			visitor.x = 525;
+			visitor.y = 100;
+			velocityX = 0;
+			velocityY = 8;
 
-		if (countdown >= 0) DrawText(std::to_string((countdown - 1) / 60 + 1).c_str(), 540, 460, 120, WHITE);
-		else DrawRectangleRec(ball, WHITE); // draw projectile
+			visitorScore++;
+			countdown = 180;
+			PlaySound(explosion);
+		}
 
-		EndDrawing();
+		ball.x += velocityX;
+		ball.y += velocityY;
 	}
+	else {
+		countdown--;
+	}
+}
+
+void drawMultiplayerScreen() {
+	DrawRectangleRec(home, WHITE); // draw home paddle
+	DrawRectangleRec(visitor, WHITE); // draw visitor paddle
+	DrawText(std::to_string(homeScore).c_str(), 600, 950, 50, WHITE);
+	DrawText(std::to_string(visitorScore).c_str(), 600, 50, 50, WHITE);
+
+	if (countdown >= 0) DrawText(std::to_string((countdown - 1) / 60 + 1).c_str(), 540, 460, 120, WHITE);
+	else DrawRectangleRec(ball, WHITE); // draw projectile
 }

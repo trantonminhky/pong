@@ -1,3 +1,4 @@
 #pragma once
 
-void launchMultiplayer();
+void updateMultiplayerScreen();
+void drawMultiplayerScreen();

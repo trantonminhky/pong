@@ -1,43 +1,82 @@
 #include <raylib.h>
 #include <string>
 #include <time.h>
+#include "helper.h"
 #include "singleplayer.h"
+#include "difficultyMenu.h"
 #include "multiplayer.h"
 #include "menu.h"
 
-Image icon = LoadImage("./pixil-frame-0.png");
+Sound hitsoundWeak = { 0 };
+Sound hitsoundStrong = { 0 };
+Sound explosion = { 0 };
 
 int main() {
+	InitWindow(1200, 1000, "pong");
+	InitAudioDevice();
+	
 	srand(time(NULL));
 
-	InitWindow(1200, 1000, "pong");
-	SetTargetFPS(60);
+	Music backgroundMusic = LoadMusicStream("./assets/vivaldi.mp3");
+	hitsoundWeak = LoadSound("./assets/hit_weak.wav");
+	hitsoundStrong = LoadSound("./assets/hit_strong.wav");
+	explosion = LoadSound("./assets/explosion.wav");
+	Image icon = LoadImage("./assets/pixil-frame-0.png");
+	backgroundMusic.looping = true;
+
+	SetTargetFPS(144);
 	SetWindowIcon(icon);
 
+	PlayMusicStream(backgroundMusic);
+		
+	GameState CurrentState = GameState::MENU;
+
 	while (!WindowShouldClose()) {
-		int option = launchMenu();
-		switch (option) {
-		case 1: // singleplayer easy
-			launchSingleplayer(50);
+		BeginDrawing();
+		UpdateMusicStream(backgroundMusic);
+		ClearBackground(BLACK);
+		switch (CurrentState) {
+		case GameState::MENU:
+			updateMenuScreen(CurrentState);
+			drawMenuScreen();
 			break;
 
-		case 2: // singleplayer normal
-			launchSingleplayer(30);
+		case GameState::DIFFICULTY_MENU:
+			updateDifficultyMenuScreen(CurrentState);
+			drawDifficultyMenuScreen();
 			break;
 
-		case 3: // singleplayer hard
-			launchSingleplayer(10);
+		case GameState::SINGLEPLAYER_EASY: // singleplayer easy
+			updateSingleplayerScreen(50);
+			drawSingleplayerScreen();
 			break;
 
-		case 4: // multiplayer
-			launchMultiplayer();
+		case GameState::SINGLEPLAYER_MEDIUM: // singleplayer medium
+			updateSingleplayerScreen(30);
+			drawSingleplayerScreen();
+			break;
+
+		case GameState::SINGLEPLAYER_HARD: // singleplayer hard
+			updateSingleplayerScreen(10);
+			drawSingleplayerScreen();
+			break;
+
+		case GameState::MULTIPLAYER: // multiplayer
+			updateMultiplayerScreen();
+			drawMultiplayerScreen();
 			break;
 
 		default:
+			UnloadMusicStream(backgroundMusic);
+			CloseAudioDevice();
 			CloseWindow();
-			return 1;
+			return 0;
 		}
+		EndDrawing();
 	}
+
+	UnloadMusicStream(backgroundMusic);
+	CloseAudioDevice();
 	CloseWindow();
 	return 0;
 }

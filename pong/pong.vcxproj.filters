@@ -52,7 +52,21 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="pixil-frame-0.png">
+    <Media Include="assets\hit_weak.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\vivaldi.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\explosion.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\hit_strong.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\pixil-frame-0.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -1,3 +1,5 @@
 #pragma once
+#include "helper.h"
 
-int launchDifficultyMenu();
+void updateDifficultyMenuScreen(GameState& CurrentState);
+void drawDifficultyMenuScreen();
