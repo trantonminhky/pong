@@ -5,11 +5,14 @@
 #include "multiplayer.h"
 #include "menu.h"
 
+Image icon = LoadImage("./pixil-frame-0.png");
+
 int main() {
 	srand(time(NULL));
 
-	InitWindow(1200, 1000, "PONG");
+	InitWindow(1200, 1000, "pong");
 	SetTargetFPS(60);
+	SetWindowIcon(icon);
 
 	while (!WindowShouldClose()) {
 		int option = launchMenu();
