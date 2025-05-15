@@ -200,7 +200,7 @@
     <Media Include="assets\vivaldi.mp3" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\pixil-frame-0.png" />
+    <Image Include="assets\window_icon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

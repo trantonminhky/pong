@@ -26,7 +26,7 @@ void init() {
 	hitsoundMenuWeak = LoadSound("./assets/menu_hit_weak.wav");
 	hitsoundMenuStrong = LoadSound("./assets/menu_hit_strong.wav");
 	explosion = LoadSound("./assets/explosion.wav");
-	icon = LoadImage("./assets/pixil-frame-0.png");
+	icon = LoadImage("./assets/window_icon.png");
 
 	backgroundMusic.looping = true;
 	SetWindowIcon(icon);

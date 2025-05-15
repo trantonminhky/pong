@@ -72,7 +72,7 @@
     </Media>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\pixil-frame-0.png">
+    <Image Include="assets\window_icon.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
