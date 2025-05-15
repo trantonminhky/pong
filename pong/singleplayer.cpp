@@ -3,10 +3,10 @@
 #include "helper.h"
 #include "singleplayer.h"
 
-void updateSingleplayerScreen(int failureRate, GameState &CurrentState) {
+void updateSingleplayerScreen(int failureRate, GameState &CurrentGameState) {
 	int random = rand() % 100 + 1;
 	if (IsKeyPressed(KEY_ESCAPE)) {
-		CurrentState = GameState::MENU;
+		CurrentGameState = GameState::MENU;
 		return;
 	}
 

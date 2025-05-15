@@ -19,6 +19,29 @@ void resetState() {
 	visitor = { 525, 100, 150, 10 };
 }
 
+void drawVolumeIcon(VolumeState CurrentVolumeState) {
+	switch (CurrentVolumeState) {
+	case VolumeState::MUTE:
+		DrawTextureEx(volume_mute, { 10, 900 }, 0, 3, WHITE);
+		break;
+
+	case VolumeState::QUIET:
+		DrawTextureEx(volume_quiet, { 10, 900 }, 0, 3, WHITE);
+		break;
+
+	case VolumeState::MEDIUM:
+		DrawTextureEx(volume_medium, { 10, 900 }, 0, 3, WHITE);
+		break;
+
+	case VolumeState::LOUD:
+		DrawTextureEx(volume_loud, { 10, 900 }, 0, 3, WHITE);
+		break;
+
+	default:
+		return;
+	}
+}
+
 void init() {
 	backgroundMusic = LoadMusicStream("./assets/vivaldi.mp3");
 	hitsoundWeak = LoadSound("./assets/hit_weak.wav");
@@ -26,7 +49,13 @@ void init() {
 	hitsoundMenuWeak = LoadSound("./assets/menu_hit_weak.wav");
 	hitsoundMenuStrong = LoadSound("./assets/menu_hit_strong.wav");
 	explosion = LoadSound("./assets/explosion.wav");
+
 	icon = LoadImage("./assets/window_icon.png");
+
+	volume_mute = LoadTexture("./assets/volume_mute.png");
+	volume_quiet = LoadTexture("./assets/volume_quiet.png");
+	volume_medium = LoadTexture("./assets/volume_medium.png");
+	volume_loud = LoadTexture("./assets/volume_loud.png");
 
 	backgroundMusic.looping = true;
 	SetWindowIcon(icon);
@@ -58,3 +87,8 @@ Sound hitsoundMenuStrong = { 0 };
 Sound explosion = { 0 };
 Music backgroundMusic = { 0 };
 Image icon = { 0 };
+
+Texture2D volume_mute = { 0 };
+Texture2D volume_quiet = { 0 };
+Texture2D volume_medium = { 0 };
+Texture2D volume_loud = { 0 };

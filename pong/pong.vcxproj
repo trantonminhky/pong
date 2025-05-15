@@ -200,6 +200,10 @@
     <Media Include="assets\vivaldi.mp3" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\volume_loud.png" />
+    <Image Include="assets\volume_medium.png" />
+    <Image Include="assets\volume_mute.png" />
+    <Image Include="assets\volume_quiet.png" />
     <Image Include="assets\window_icon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

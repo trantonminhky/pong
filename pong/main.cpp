@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include <string>
 #include <time.h>
+#include <iostream>
 #include "helper.h"
 #include "singleplayer.h"
 #include "difficultyMenu.h"
@@ -17,7 +18,11 @@ int main() {
 	SetTargetFPS(144);
 	SetWindowIcon(icon);
 
-	GameState CurrentState = GameState::LOADING;
+	GameState CurrentGameState = GameState::LOADING;
+	VolumeState CurrentVolumeState = VolumeState::MEDIUM;
+
+	SetMasterVolume(0.5);
+	std::cout << GetMasterVolume() << std::endl;
 
 	BeginDrawing();
 	ClearBackground(BLACK);
@@ -28,41 +33,43 @@ int main() {
 
 	PlayMusicStream(backgroundMusic);
 		
-	CurrentState = GameState::MENU;
+	CurrentGameState = GameState::MENU;
 
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 		UpdateMusicStream(backgroundMusic);
 		ClearBackground(BLACK);
-		switch (CurrentState) {
+		drawVolumeIcon(CurrentVolumeState);
+
+		switch (CurrentGameState) {
 		case GameState::MENU:
 			resetState();
-			updateMenuScreen(CurrentState);
+			updateMenuScreen(CurrentGameState);
 			drawMenuScreen();
 			break;
 
 		case GameState::DIFFICULTY_MENU:
-			updateDifficultyMenuScreen(CurrentState);
+			updateDifficultyMenuScreen(CurrentGameState);
 			drawDifficultyMenuScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_EASY: // singleplayer easy
-			updateSingleplayerScreen(50, CurrentState);
+			updateSingleplayerScreen(50, CurrentGameState);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_MEDIUM: // singleplayer medium
-			updateSingleplayerScreen(30, CurrentState);
+			updateSingleplayerScreen(30, CurrentGameState);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_HARD: // singleplayer hard
-			updateSingleplayerScreen(10, CurrentState);
+			updateSingleplayerScreen(10, CurrentGameState);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::MULTIPLAYER: // multiplayer
-			updateMultiplayerScreen(CurrentState);
+			updateMultiplayerScreen(CurrentGameState);
 			drawMultiplayerScreen();
 			break;
 

@@ -75,5 +75,17 @@
     <Image Include="assets\window_icon.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\volume_mute.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\volume_quiet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\volume_loud.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\volume_medium.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

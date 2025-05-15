@@ -9,13 +9,27 @@ enum class GameState {
 	SINGLEPLAYER_HARD,
 	MULTIPLAYER
 };
+
+enum class VolumeState {
+	MUTE,
+	QUIET,
+	MEDIUM,
+	LOUD
+};
+
 extern Sound hitsoundWeak;
 extern Sound hitsoundStrong;
 extern Sound hitsoundMenuWeak;
 extern Sound hitsoundMenuStrong;
 extern Sound explosion;
 extern Music backgroundMusic;
+
 extern Image icon;
+
+extern Texture2D volume_mute;
+extern Texture2D volume_quiet;
+extern Texture2D volume_medium;
+extern Texture2D volume_loud;
 
 extern Rectangle singleplayerButton;
 extern Rectangle multiplayerButton;
@@ -41,3 +55,4 @@ extern GameState CurrentState;
 bool isWithinX(int curX, int windowSizeX);
 void resetState();
 void init();
+void drawVolumeIcon(VolumeState CurrentVolumeState);
