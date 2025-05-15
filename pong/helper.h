@@ -17,6 +17,8 @@ enum class VolumeState {
 	LOUD
 };
 
+extern bool firstCountdown;
+
 extern Sound hitsoundWeak;
 extern Sound hitsoundStrong;
 extern Sound hitsoundMenuWeak;

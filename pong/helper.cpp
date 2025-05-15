@@ -6,7 +6,8 @@ bool isWithinX(int curX, int windowSizeX) {
 }
 
 void resetState() {
-	countdown = 180;
+	firstCountdown = true;
+	countdown = 300;
 
 	velocityX = 0; // initial ball velocity
 	velocityY = 8;
@@ -96,7 +97,7 @@ Rectangle hardButton = { 350, 800, 500, 100 };
 
 Rectangle volumeHitbox = { 10, 900, 96, 96 };
 
-int countdown = 180;
+int countdown = 300;
 
 int velocityX = 0; // initial ball velocity
 int velocityY = 8;
@@ -120,3 +121,5 @@ Texture2D volume_mute = { 0 };
 Texture2D volume_quiet = { 0 };
 Texture2D volume_medium = { 0 };
 Texture2D volume_loud = { 0 };
+
+bool firstCountdown = true;
