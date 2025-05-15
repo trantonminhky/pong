@@ -19,6 +19,19 @@ void resetState() {
 	visitor = { 525, 100, 150, 10 };
 }
 
+void init() {
+	backgroundMusic = LoadMusicStream("./assets/vivaldi.mp3");
+	hitsoundWeak = LoadSound("./assets/hit_weak.wav");
+	hitsoundStrong = LoadSound("./assets/hit_strong.wav");
+	hitsoundMenuWeak = LoadSound("./assets/menu_hit_weak.wav");
+	hitsoundMenuStrong = LoadSound("./assets/menu_hit_strong.wav");
+	explosion = LoadSound("./assets/explosion.wav");
+	icon = LoadImage("./assets/pixil-frame-0.png");
+
+	backgroundMusic.looping = true;
+	SetWindowIcon(icon);
+}
+
 Rectangle singleplayerButton = { 350, 500, 500, 100 };
 Rectangle multiplayerButton = { 350, 700, 500, 100 };
 
@@ -37,3 +50,11 @@ int visitorScore = 0;
 Rectangle ball = { 590, 490, 20, 20 };
 Rectangle home = { 525, 900, 150, 10 };
 Rectangle visitor = { 525, 100, 150, 10 };
+
+Sound hitsoundWeak = { 0 };
+Sound hitsoundStrong = { 0 };
+Sound hitsoundMenuWeak = { 0 };
+Sound hitsoundMenuStrong = { 0 };
+Sound explosion = { 0 };
+Music backgroundMusic = { 0 };
+Image icon = { 0 };

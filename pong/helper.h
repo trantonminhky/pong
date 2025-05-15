@@ -1,6 +1,7 @@
 #pragma once
 
 enum class GameState {
+	LOADING,
 	MENU,
 	DIFFICULTY_MENU,
 	SINGLEPLAYER_EASY,
@@ -13,6 +14,8 @@ extern Sound hitsoundStrong;
 extern Sound hitsoundMenuWeak;
 extern Sound hitsoundMenuStrong;
 extern Sound explosion;
+extern Music backgroundMusic;
+extern Image icon;
 
 extern Rectangle singleplayerButton;
 extern Rectangle multiplayerButton;
@@ -37,3 +40,4 @@ extern GameState CurrentState;
 
 bool isWithinX(int curX, int windowSizeX);
 void resetState();
+void init();

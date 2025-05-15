@@ -7,12 +7,6 @@
 #include "multiplayer.h"
 #include "menu.h"
 
-Sound hitsoundWeak = { 0 };
-Sound hitsoundStrong = { 0 };
-Sound hitsoundMenuWeak = { 0 };
-Sound hitsoundMenuStrong = { 0 };
-Sound explosion = { 0 };
-
 int main() {
 	InitWindow(1200, 1000, "pong");
 	InitAudioDevice();
@@ -20,21 +14,21 @@ int main() {
 	srand(time(NULL));
 	SetExitKey(KEY_NULL);
 
-	Music backgroundMusic = LoadMusicStream("./assets/vivaldi.mp3");
-	hitsoundWeak = LoadSound("./assets/hit_weak.wav");
-	hitsoundStrong = LoadSound("./assets/hit_strong.wav");
-	hitsoundMenuWeak = LoadSound("./assets/menu_hit_weak.wav");
-	hitsoundMenuStrong = LoadSound("./assets/menu_hit_strong.wav");
-	explosion = LoadSound("./assets/explosion.wav");
-	Image icon = LoadImage("./assets/pixil-frame-0.png");
-	backgroundMusic.looping = true;
-
 	SetTargetFPS(144);
 	SetWindowIcon(icon);
 
+	GameState CurrentState = GameState::LOADING;
+
+	BeginDrawing();
+	ClearBackground(BLACK);
+	DrawText("LOADING...", 600 - MeasureText("LOADING...", 180) / 2, 500, 180, WHITE);
+	EndDrawing();
+
+	init();
+
 	PlayMusicStream(backgroundMusic);
 		
-	GameState CurrentState = GameState::MENU;
+	CurrentState = GameState::MENU;
 
 	while (!WindowShouldClose()) {
 		BeginDrawing();
