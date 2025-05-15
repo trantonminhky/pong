@@ -40,6 +40,7 @@ int main() {
 		UpdateMusicStream(backgroundMusic);
 		ClearBackground(BLACK);
 		drawVolumeIcon(CurrentVolumeState);
+		updateVolumeAndVolumeIcon(CurrentVolumeState);
 
 		switch (CurrentGameState) {
 		case GameState::MENU:

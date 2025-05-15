@@ -42,6 +42,32 @@ void drawVolumeIcon(VolumeState CurrentVolumeState) {
 	}
 }
 
+void updateVolumeAndVolumeIcon(VolumeState &CurrentVolumeState) {
+	if (CheckCollisionPointRec(GetMousePosition(), volumeHitbox) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+		switch (CurrentVolumeState) {
+		case VolumeState::MUTE:
+			SetMasterVolume(0.2);
+			CurrentVolumeState = VolumeState::QUIET;
+			break;
+
+		case VolumeState::QUIET:
+			SetMasterVolume(0.5);
+			CurrentVolumeState = VolumeState::MEDIUM;
+			break;
+
+		case VolumeState::MEDIUM:
+			SetMasterVolume(0.8);
+			CurrentVolumeState = VolumeState::LOUD;
+			break;
+
+		case VolumeState::LOUD:
+			SetMasterVolume(0);
+			CurrentVolumeState = VolumeState::MUTE;
+			break;
+		}
+	}
+}
+
 void init() {
 	backgroundMusic = LoadMusicStream("./assets/vivaldi.mp3");
 	hitsoundWeak = LoadSound("./assets/hit_weak.wav");
@@ -67,6 +93,8 @@ Rectangle multiplayerButton = { 350, 700, 500, 100 };
 Rectangle easyButton = { 350, 400, 500, 100 };
 Rectangle normalButton = { 350, 600, 500, 100 };
 Rectangle hardButton = { 350, 800, 500, 100 };
+
+Rectangle volumeHitbox = { 10, 900, 96, 96 };
 
 int countdown = 180;
 

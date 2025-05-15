@@ -38,6 +38,8 @@ extern Rectangle easyButton;
 extern Rectangle normalButton;
 extern Rectangle hardButton;
 
+extern Rectangle volumeHitbox;
+
 extern int countdown;
 
 extern int velocityX;
@@ -56,3 +58,4 @@ bool isWithinX(int curX, int windowSizeX);
 void resetState();
 void init();
 void drawVolumeIcon(VolumeState CurrentVolumeState);
+void updateVolumeAndVolumeIcon(VolumeState &CurrentVolumeState);
