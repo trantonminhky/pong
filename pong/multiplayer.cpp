@@ -4,7 +4,7 @@
 #include "singleplayer.h"
 #include "multiplayer.h"
 
-void updateMultiplayerScreen(GameState &CurrentGameState) {
+void updateMultiplayerScreen() {
 	if (IsKeyPressed(KEY_ESCAPE)) {
 		CurrentGameState = GameState::MENU;
 		return;

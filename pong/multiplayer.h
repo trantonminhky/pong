@@ -1,4 +1,4 @@
 #pragma once
 
-void updateMultiplayerScreen(GameState& CurrentState);
+void updateMultiplayerScreen();
 void drawMultiplayerScreen();

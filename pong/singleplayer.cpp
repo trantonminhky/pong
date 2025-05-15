@@ -3,7 +3,7 @@
 #include "helper.h"
 #include "singleplayer.h"
 
-void updateSingleplayerScreen(int failureRate, GameState &CurrentGameState) {
+void updateSingleplayerScreen(int failureRate) {
 	int random = rand() % 100 + 1;
 	if (IsKeyPressed(KEY_ESCAPE)) {
 		CurrentGameState = GameState::MENU;

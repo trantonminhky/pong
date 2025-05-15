@@ -1,4 +1,4 @@
 #pragma once
 
-void updateSingleplayerScreen(int failureRate, GameState& CurrentState);
+void updateSingleplayerScreen(int failureRate);
 void drawSingleplayerScreen();

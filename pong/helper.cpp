@@ -20,7 +20,7 @@ void resetState() {
 	visitor = { 525, 100, 150, 10 };
 }
 
-void drawVolumeIcon(VolumeState CurrentVolumeState) {
+void drawVolumeIcon() {
 	switch (CurrentVolumeState) {
 	case VolumeState::MUTE:
 		DrawTextureEx(volume_mute, { 10, 900 }, 0, 3, WHITE);
@@ -43,7 +43,7 @@ void drawVolumeIcon(VolumeState CurrentVolumeState) {
 	}
 }
 
-void updateVolumeAndVolumeIcon(VolumeState &CurrentVolumeState) {
+void updateVolumeAndVolumeIcon() {
 	if (CheckCollisionPointRec(GetMousePosition(), volumeHitbox) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 		switch (CurrentVolumeState) {
 		case VolumeState::MUTE:
@@ -123,3 +123,5 @@ Texture2D volume_medium = { 0 };
 Texture2D volume_loud = { 0 };
 
 bool firstCountdown = true;
+GameState CurrentGameState = GameState::LOADING;
+VolumeState CurrentVolumeState = VolumeState::MEDIUM;

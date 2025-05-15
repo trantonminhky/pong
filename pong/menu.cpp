@@ -3,7 +3,7 @@
 #include "menu.h"
 #include "helper.h"
 
-void updateMenuScreen(GameState &CurrentGameState) {
+void updateMenuScreen() {
 	if (CheckCollisionPointRec(GetMousePosition(), singleplayerButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		CurrentGameState = GameState::DIFFICULTY_MENU;
 		PlaySound(hitsoundMenuWeak);

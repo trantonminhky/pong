@@ -54,10 +54,11 @@ extern Rectangle ball;
 extern Rectangle home;
 extern Rectangle visitor;
 
-extern GameState CurrentState;
+extern GameState CurrentGameState;
+extern VolumeState CurrentVolumeState;
 
 bool isWithinX(int curX, int windowSizeX);
 void resetState();
 void init();
-void drawVolumeIcon(VolumeState CurrentVolumeState);
-void updateVolumeAndVolumeIcon(VolumeState &CurrentVolumeState);
+void drawVolumeIcon();
+void updateVolumeAndVolumeIcon();

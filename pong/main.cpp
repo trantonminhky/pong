@@ -18,9 +18,6 @@ int main() {
 	SetTargetFPS(144);
 	SetWindowIcon(icon);
 
-	GameState CurrentGameState = GameState::LOADING;
-	VolumeState CurrentVolumeState = VolumeState::MEDIUM;
-
 	SetMasterVolume(0.5);
 	std::cout << GetMasterVolume() << std::endl;
 
@@ -39,38 +36,38 @@ int main() {
 		BeginDrawing();
 		UpdateMusicStream(backgroundMusic);
 		ClearBackground(BLACK);
-		drawVolumeIcon(CurrentVolumeState);
-		updateVolumeAndVolumeIcon(CurrentVolumeState);
+		drawVolumeIcon();
+		updateVolumeAndVolumeIcon();
 
 		switch (CurrentGameState) {
 		case GameState::MENU:
 			resetState();
-			updateMenuScreen(CurrentGameState);
+			updateMenuScreen();
 			drawMenuScreen();
 			break;
 
 		case GameState::DIFFICULTY_MENU:
-			updateDifficultyMenuScreen(CurrentGameState);
+			updateDifficultyMenuScreen();
 			drawDifficultyMenuScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_EASY: // singleplayer easy
-			updateSingleplayerScreen(50, CurrentGameState);
+			updateSingleplayerScreen(50);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_MEDIUM: // singleplayer medium
-			updateSingleplayerScreen(30, CurrentGameState);
+			updateSingleplayerScreen(30);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_HARD: // singleplayer hard
-			updateSingleplayerScreen(10, CurrentGameState);
+			updateSingleplayerScreen(10);
 			drawSingleplayerScreen();
 			break;
 
 		case GameState::MULTIPLAYER: // multiplayer
-			updateMultiplayerScreen(CurrentGameState);
+			updateMultiplayerScreen();
 			drawMultiplayerScreen();
 			break;
 
