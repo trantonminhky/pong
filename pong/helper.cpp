@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include <random>
 #include "helper.h"
 
 bool isWithinX(int curX, int windowSizeX) {
@@ -14,6 +15,8 @@ void resetState() {
 
 	homeScore = 0;
 	visitorScore = 0;
+
+	homeMana = 0;
 
 	ball = { 590, 490, 20, 20 };
 	home = { 525, 900, 150, 10 };
@@ -115,6 +118,11 @@ void drawWinnerOrInstruction(int status) {
 	}
 }
 
+// this function is invoked everytime a paddle hits the ball, increasing randomly from 5 to 15 (max mana possible is 100)
+void increaseMana(int &mana) {
+	mana += std::min((rand() % 11) + 5, 100 - mana);
+}
+
 Rectangle singleplayerButton = { 350, 500, 500, 100 };
 Rectangle multiplayerButton = { 350, 700, 500, 100 };
 
@@ -131,6 +139,8 @@ int velocityY = 8;
 
 int homeScore = 0;
 int visitorScore = 0;
+
+int homeMana = 0;
 
 Rectangle ball = { 590, 490, 20, 20 };
 Rectangle home = { 525, 900, 150, 10 };

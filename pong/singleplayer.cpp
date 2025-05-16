@@ -25,12 +25,12 @@ void updateSingleplayerScreen(int failureRate) {
 			velocityX *= -1;
 			PlaySound(hitsoundWeak);
 		}
-		if (CheckCollisionRecs(ball, home) || CheckCollisionRecs(ball, visitor)) {
-			velocityY *= -1;
-			velocityX = (rand() % 21) - 10;
-
-			if (abs(velocityX) >= 15) PlaySound(hitsoundStrong);
-			else PlaySound(hitsoundWeak);
+		if (CheckCollisionRecs(ball, home)) {
+			redirectBall();
+			increaseMana(homeMana);
+		}
+		else if (CheckCollisionRecs(ball, visitor)) {
+			redirectBall();
 		}
 
 		if (ball.y < 0) { // home wins
@@ -73,14 +73,30 @@ void updateSingleplayerScreen(int failureRate) {
 }
 
 void drawSingleplayerScreen() {
-	DrawRectangleRec(home, WHITE); // draw home paddle
-	DrawRectangleRec(visitor, WHITE); // draw visitor paddle
+	// paddles
+	DrawRectangleRec(home, WHITE);
+	DrawRectangleRec(visitor, WHITE);
+
+	// mana
+	DrawRectangleLinesEx({ 900, 950, 200, 30 }, 3, WHITE);
+	DrawRectangle(900, 950, homeMana * 2, 30, WHITE);
+
+	// scores
 	DrawText(std::to_string(homeScore).c_str(), 600, 950, 50, WHITE);
 	DrawText(std::to_string(visitorScore).c_str(), 600, 50, 50, WHITE);
 
+	// countdown and announcements
 	if (countdown >= 0) {
 		DrawText(std::to_string((countdown - 1) / 60 + 1).c_str(), 540, 460, 120, WHITE);
 		drawWinnerOrInstruction(winnerState);
 	}
 	else DrawRectangleRec(ball, WHITE); // draw projectile
+}
+
+void redirectBall() {
+	velocityY *= -1;
+	velocityX = (rand() % 21) - 10;
+
+	if (abs(velocityX) >= 15) PlaySound(hitsoundStrong);
+	else PlaySound(hitsoundWeak);
 }
