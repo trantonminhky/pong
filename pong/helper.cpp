@@ -87,6 +87,8 @@ void init() {
 	hitsoundMenuWeak = LoadSound("./assets/sfx/menu_hit_weak.wav");
 	hitsoundMenuStrong = LoadSound("./assets/sfx/menu_hit_strong.wav");
 	explosion = LoadSound("./assets/sfx/explosion.wav");
+	failsound = LoadSound("./assets/sfx/skill_use_fail.wav");
+	subsound = LoadSound("./assets/sfx/sub.wav");
 
 	icon = LoadImage("./assets/sprites/window_icon.png");
 
@@ -170,6 +172,9 @@ Sound hitsoundStrong = { 0 };
 Sound hitsoundMenuWeak = { 0 };
 Sound hitsoundMenuStrong = { 0 };
 Sound explosion = { 0 };
+Sound failsound = { 0 };
+Sound subsound = { 0 };
+
 Music backgroundMusic = { 0 };
 Image icon = { 0 };
 

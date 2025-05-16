@@ -20,6 +20,10 @@ void updateSingleplayerScreen(int failureRate) {
 			if (homeSkillDurationLeft <= 0 && depleteMana(homeMana, 50)) {
 				homeSkillDurationLeft = HOME_SUB_DURATION;
 				CurrentSkillInUse = Skills::HOME_SUB;
+				PlaySound(subsound);
+			}
+			else {
+				PlaySound(failsound);
 			}
 		}
 

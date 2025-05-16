@@ -24,6 +24,9 @@ extern Sound hitsoundStrong;
 extern Sound hitsoundMenuWeak;
 extern Sound hitsoundMenuStrong;
 extern Sound explosion;
+extern Sound failsound;
+extern Sound subsound;
+
 extern Music backgroundMusic;
 
 extern Image icon;
