@@ -8,6 +8,13 @@
 #include "multiplayer.h"
 #include "menu.h"
 
+#ifdef NDEBUG
+
+#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+
+#endif
+
+
 int main() {
 	InitWindow(1200, 1000, "pong");
 	InitAudioDevice();
