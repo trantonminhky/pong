@@ -17,6 +17,11 @@ void resetState() {
 	homeScore = 0;
 	visitorScore = 0;
 
+	homeSpeed = 10;
+	visitorSpeed = 10;
+
+	homeSkillDurationLeft = 0;
+
 	homeMana = 0;
 
 	ball = { 590, 490, 20, 20 };

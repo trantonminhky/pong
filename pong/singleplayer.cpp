@@ -17,7 +17,7 @@ void updateSingleplayerScreen(int failureRate) {
 		if (IsKeyDown(KEY_A)) home.x -= home.x >= 0 ? homeSpeed : 0; // A - move left, D - move right
 		if (IsKeyDown(KEY_D)) home.x += home.x + home.width <= 1200 ? homeSpeed : 0;
 		if (IsKeyPressed(KEY_S)) { // use sub
-			if (depleteMana(homeMana, 50)) {
+			if (homeSkillDurationLeft <= 0 && depleteMana(homeMana, 50)) {
 				homeSkillDurationLeft = HOME_SUB_DURATION;
 				CurrentSkillInUse = Skills::HOME_SUB;
 			}
