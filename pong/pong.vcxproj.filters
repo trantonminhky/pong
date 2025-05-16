@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\sfx">
+      <UniqueIdentifier>{f1c953c7-18a9-4d67-9804-0afba63895cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\sprites">
+      <UniqueIdentifier>{a197d9af-e9ac-4fdd-9107-e560f67bb056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\music">
+      <UniqueIdentifier>{2195182a-9336-4671-bbdd-514ca039e6bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -52,40 +61,45 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="assets\hit_weak.wav">
-      <Filter>Resource Files</Filter>
+    <None Include="..\README.md">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\sfx\hit_weak.wav">
+      <Filter>Resource Files\sfx</Filter>
     </Media>
-    <Media Include="assets\vivaldi.mp3">
-      <Filter>Resource Files</Filter>
+    <Media Include="assets\sfx\menu_hit_strong.wav">
+      <Filter>Resource Files\sfx</Filter>
     </Media>
-    <Media Include="assets\explosion.wav">
-      <Filter>Resource Files</Filter>
+    <Media Include="assets\sfx\menu_hit_weak.wav">
+      <Filter>Resource Files\sfx</Filter>
     </Media>
-    <Media Include="assets\hit_strong.wav">
-      <Filter>Resource Files</Filter>
+    <Media Include="assets\sfx\explosion.wav">
+      <Filter>Resource Files\sfx</Filter>
     </Media>
-    <Media Include="assets\menu_hit_weak.wav">
-      <Filter>Resource Files</Filter>
+    <Media Include="assets\sfx\hit_strong.wav">
+      <Filter>Resource Files\sfx</Filter>
     </Media>
-    <Media Include="assets\menu_hit_strong.wav">
-      <Filter>Resource Files</Filter>
+    <Media Include="assets\music\lolk_x.mp3">
+      <Filter>Resource Files\music</Filter>
     </Media>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\window_icon.png">
-      <Filter>Resource Files</Filter>
+    <Image Include="assets\sprites\volume_quiet.png">
+      <Filter>Resource Files\sprites</Filter>
     </Image>
-    <Image Include="assets\volume_mute.png">
-      <Filter>Resource Files</Filter>
+    <Image Include="assets\sprites\window_icon.png">
+      <Filter>Resource Files\sprites</Filter>
     </Image>
-    <Image Include="assets\volume_quiet.png">
-      <Filter>Resource Files</Filter>
+    <Image Include="assets\sprites\volume_loud.png">
+      <Filter>Resource Files\sprites</Filter>
     </Image>
-    <Image Include="assets\volume_loud.png">
-      <Filter>Resource Files</Filter>
+    <Image Include="assets\sprites\volume_medium.png">
+      <Filter>Resource Files\sprites</Filter>
     </Image>
-    <Image Include="assets\volume_medium.png">
-      <Filter>Resource Files</Filter>
+    <Image Include="assets\sprites\volume_mute.png">
+      <Filter>Resource Files\sprites</Filter>
     </Image>
   </ItemGroup>
 </Project>

@@ -70,19 +70,19 @@ void updateVolumeAndVolumeIcon() {
 }
 
 void init() {
-	backgroundMusic = LoadMusicStream("./assets/vivaldi.mp3");
-	hitsoundWeak = LoadSound("./assets/hit_weak.wav");
-	hitsoundStrong = LoadSound("./assets/hit_strong.wav");
-	hitsoundMenuWeak = LoadSound("./assets/menu_hit_weak.wav");
-	hitsoundMenuStrong = LoadSound("./assets/menu_hit_strong.wav");
-	explosion = LoadSound("./assets/explosion.wav");
+	backgroundMusic = LoadMusicStream("./assets/music/lolk_x.mp3");
+	hitsoundWeak = LoadSound("./assets/sfx/hit_weak.wav");
+	hitsoundStrong = LoadSound("./assets/sfx/hit_strong.wav");
+	hitsoundMenuWeak = LoadSound("./assets/sfx/menu_hit_weak.wav");
+	hitsoundMenuStrong = LoadSound("./assets/sfx/menu_hit_strong.wav");
+	explosion = LoadSound("./assets/sfx/explosion.wav");
 
-	icon = LoadImage("./assets/window_icon.png");
+	icon = LoadImage("./assets/sprites/window_icon.png");
 
-	volume_mute = LoadTexture("./assets/volume_mute.png");
-	volume_quiet = LoadTexture("./assets/volume_quiet.png");
-	volume_medium = LoadTexture("./assets/volume_medium.png");
-	volume_loud = LoadTexture("./assets/volume_loud.png");
+	volume_mute = LoadTexture("./assets/sprites/volume_mute.png");
+	volume_quiet = LoadTexture("./assets/sprites/volume_quiet.png");
+	volume_medium = LoadTexture("./assets/sprites/volume_medium.png");
+	volume_loud = LoadTexture("./assets/sprites/volume_loud.png");
 
 	backgroundMusic.looping = true;
 	SetWindowIcon(icon);

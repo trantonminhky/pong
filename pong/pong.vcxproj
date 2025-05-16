@@ -192,19 +192,22 @@
     <ClInclude Include="singleplayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="assets\explosion.wav" />
-    <Media Include="assets\hit_strong.wav" />
-    <Media Include="assets\hit_weak.wav" />
-    <Media Include="assets\menu_hit_strong.wav" />
-    <Media Include="assets\menu_hit_weak.wav" />
-    <Media Include="assets\vivaldi.mp3" />
+    <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\volume_loud.png" />
-    <Image Include="assets\volume_medium.png" />
-    <Image Include="assets\volume_mute.png" />
-    <Image Include="assets\volume_quiet.png" />
-    <Image Include="assets\window_icon.png" />
+    <Media Include="assets\music\lolk_x.mp3" />
+    <Media Include="assets\sfx\explosion.wav" />
+    <Media Include="assets\sfx\hit_strong.wav" />
+    <Media Include="assets\sfx\hit_weak.wav" />
+    <Media Include="assets\sfx\menu_hit_strong.wav" />
+    <Media Include="assets\sfx\menu_hit_weak.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\sprites\volume_loud.png" />
+    <Image Include="assets\sprites\volume_medium.png" />
+    <Image Include="assets\sprites\volume_mute.png" />
+    <Image Include="assets\sprites\volume_quiet.png" />
+    <Image Include="assets\sprites\window_icon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
