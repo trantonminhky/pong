@@ -17,7 +17,11 @@ enum class VolumeState {
 	LOUD
 };
 
-extern bool firstCountdown;
+// 11 - singleplayer instruction
+// 22 - multiplayer instruction
+// 1 - P1 wins
+// 2 - P2 wins
+extern int winnerState;
 
 extern Sound hitsoundWeak;
 extern Sound hitsoundStrong;
@@ -62,3 +66,4 @@ void resetState();
 void init();
 void drawVolumeIcon();
 void updateVolumeAndVolumeIcon();
+void drawWinnerOrInstruction(int status);

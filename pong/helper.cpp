@@ -6,7 +6,7 @@ bool isWithinX(int curX, int windowSizeX) {
 }
 
 void resetState() {
-	firstCountdown = true;
+	winnerState = 0;
 	countdown = 300;
 
 	velocityX = 0; // initial ball velocity
@@ -88,6 +88,33 @@ void init() {
 	SetWindowIcon(icon);
 }
 
+
+// 11 - instruction singleplayer
+// 22 - instruction multiplayer
+// 1 - P1 wins
+// 2 - P2 wins
+// else do not draw anything
+
+void drawWinnerOrInstruction(int status) {
+	switch (status) {
+	case 11:
+		DrawText("A - D to move\nESC to exit\nGood luck!", 400, 700, 60, WHITE);
+		break;
+
+	case 22:
+		DrawText("A - D to move Player 1\nArrow keys to move Player 2\nESC to exit\nGood luck!", 200, 650, 60, WHITE);
+		break;
+
+	case 1:
+		DrawText("Player 1 wins!", 400, 700, 60, WHITE);
+		break;
+
+	case 2:
+		DrawText("Player 2 wins!", 400, 300, 60, WHITE);
+		break;
+	}
+}
+
 Rectangle singleplayerButton = { 350, 500, 500, 100 };
 Rectangle multiplayerButton = { 350, 700, 500, 100 };
 
@@ -122,6 +149,6 @@ Texture2D volume_quiet = { 0 };
 Texture2D volume_medium = { 0 };
 Texture2D volume_loud = { 0 };
 
-bool firstCountdown = true;
+int winnerState = 0;
 GameState CurrentGameState = GameState::LOADING;
 VolumeState CurrentVolumeState = VolumeState::MEDIUM;

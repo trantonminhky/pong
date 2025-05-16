@@ -45,6 +45,7 @@ void updateSingleplayerScreen(int failureRate) {
 
 			homeScore++;
 			countdown = 180;
+			winnerState = 1;
 			PlaySound(explosion);
 		}
 		else if (ball.y + ball.height > 1000) {
@@ -59,6 +60,7 @@ void updateSingleplayerScreen(int failureRate) {
 
 			visitorScore++;
 			countdown = 180;
+			winnerState = 2;
 			PlaySound(explosion);
 		}
 
@@ -78,10 +80,7 @@ void drawSingleplayerScreen() {
 
 	if (countdown >= 0) {
 		DrawText(std::to_string((countdown - 1) / 60 + 1).c_str(), 540, 460, 120, WHITE);
-		if (firstCountdown) {
-			DrawText("A - D to move\nESC to exit\nGood luck!", 400, 700, 60, WHITE);
-		}
-		if (countdown == 0) firstCountdown = false;
+		drawWinnerOrInstruction(winnerState);
 	}
 	else DrawRectangleRec(ball, WHITE); // draw projectile
 }

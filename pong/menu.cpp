@@ -11,6 +11,7 @@ void updateMenuScreen() {
 
 	if (CheckCollisionPointRec(GetMousePosition(), multiplayerButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		CurrentGameState = GameState::MULTIPLAYER;
+		winnerState = 22;
 		PlaySound(hitsoundMenuStrong);
 	}
 }

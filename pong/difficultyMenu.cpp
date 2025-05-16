@@ -6,14 +6,17 @@
 void updateDifficultyMenuScreen() {
 	if (CheckCollisionPointRec(GetMousePosition(), easyButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		CurrentGameState = GameState::SINGLEPLAYER_EASY;
+		winnerState = 11;
 		PlaySound(hitsoundMenuStrong);
 	}
 	if (CheckCollisionPointRec(GetMousePosition(), normalButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		CurrentGameState = GameState::SINGLEPLAYER_MEDIUM;
+		winnerState = 11;
 		PlaySound(hitsoundMenuStrong);
 	}
 	if (CheckCollisionPointRec(GetMousePosition(), hardButton) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		CurrentGameState = GameState::SINGLEPLAYER_HARD;
+		winnerState = 11;
 		PlaySound(hitsoundMenuStrong);
 	}
 }
