@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include <random>
 #include "helper.h"
+#include "skills.h"
 
 bool isWithinX(int curX, int windowSizeX) {
 	return (curX >= 0 && curX <= windowSizeX - 20); // accounts for rectangle size
@@ -21,6 +22,8 @@ void resetState() {
 	ball = { 590, 490, 20, 20 };
 	home = { 525, 900, 150, 10 };
 	visitor = { 525, 100, 150, 10 };
+
+	CurrentSkillInUse = Skills::NONE;
 }
 
 void drawVolumeIcon() {
@@ -123,6 +126,12 @@ void increaseMana(int &mana) {
 	mana += std::min((rand() % 11) + 5, 100 - mana);
 }
 
+bool depleteMana(int& mana, int depleteAmount) {
+	if (mana < depleteAmount) return false;
+	mana -= depleteAmount;
+	return true;
+}
+
 Rectangle singleplayerButton = { 350, 500, 500, 100 };
 Rectangle multiplayerButton = { 350, 700, 500, 100 };
 
@@ -134,6 +143,9 @@ Rectangle volumeHitbox = { 10, 900, 96, 96 };
 
 int countdown = 300;
 
+int homeSpeed = 10;
+int visitorSpeed = 10;
+
 int velocityX = 0; // initial ball velocity
 int velocityY = 8;
 
@@ -141,6 +153,8 @@ int homeScore = 0;
 int visitorScore = 0;
 
 int homeMana = 0;
+
+int homeSkillDurationLeft = 0;
 
 Rectangle ball = { 590, 490, 20, 20 };
 Rectangle home = { 525, 900, 150, 10 };
@@ -162,3 +176,4 @@ Texture2D volume_loud = { 0 };
 int winnerState = 0;
 GameState CurrentGameState = GameState::LOADING;
 VolumeState CurrentVolumeState = VolumeState::MEDIUM;
+Skills CurrentSkillInUse = Skills::NONE;

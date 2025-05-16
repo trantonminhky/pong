@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include <string>
 #include "helper.h"
+#include "skills.h"
 #include "singleplayer.h"
 
 void updateSingleplayerScreen(int failureRate) {
@@ -11,14 +12,22 @@ void updateSingleplayerScreen(int failureRate) {
 	}
 
 	if (countdown < 0) {
-		if (IsKeyDown(KEY_A)) home.x -= home.x >= 0 ? 10 : 0; // A - move left, D - move right
-		if (IsKeyDown(KEY_D)) home.x += home.x + home.width <= 1200 ? 10 : 0;
+		enactCurrentSkill();
+
+		if (IsKeyDown(KEY_A)) home.x -= home.x >= 0 ? homeSpeed : 0; // A - move left, D - move right
+		if (IsKeyDown(KEY_D)) home.x += home.x + home.width <= 1200 ? homeSpeed : 0;
+		if (IsKeyPressed(KEY_S)) { // use sub
+			if (depleteMana(homeMana, 50)) {
+				homeSkillDurationLeft = HOME_SUB_DURATION;
+				CurrentSkillInUse = Skills::HOME_SUB;
+			}
+		}
 
 		if (ball.x < visitor.x + visitor.width / 4) {
-			visitor.x -= (visitor.x >= 0 && (random >= failureRate)) ? 10 : 0;
+			visitor.x -= (visitor.x >= 0 && (random >= failureRate)) ? visitorSpeed : 0;
 		}
 		if (ball.x > visitor.x + visitor.width / 4 + visitor.width / 2) {
-			visitor.x += (visitor.x + visitor.width <= 1200 && (random >= failureRate)) ? 10 : 0;
+			visitor.x += (visitor.x + visitor.width <= 1200 && (random >= failureRate)) ? visitorSpeed : 0;
 		}
 
 		if (!isWithinX(ball.x, 1200)) {
@@ -85,6 +94,9 @@ void drawSingleplayerScreen() {
 	DrawText(std::to_string(homeScore).c_str(), 600, 950, 50, WHITE);
 	DrawText(std::to_string(visitorScore).c_str(), 600, 50, 50, WHITE);
 
+	// debugging
+	DrawText(std::to_string(homeSpeed).c_str(), 100, 500, 50, WHITE);
+
 	// countdown and announcements
 	if (countdown >= 0) {
 		DrawText(std::to_string((countdown - 1) / 60 + 1).c_str(), 540, 460, 120, WHITE);
@@ -99,4 +111,12 @@ void redirectBall() {
 
 	if (abs(velocityX) >= 15) PlaySound(hitsoundStrong);
 	else PlaySound(hitsoundWeak);
+}
+
+void enactCurrentSkill() {
+	switch (CurrentSkillInUse) {
+	case Skills::HOME_SUB:
+		Sub::home(homeSkillDurationLeft);
+		break;
+	}
 }

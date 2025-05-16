@@ -1,4 +1,5 @@
 #pragma once
+#include "skills.h"
 
 enum class GameState {
 	LOADING,
@@ -32,11 +33,12 @@ extern Texture2D volume_quiet;
 extern Texture2D volume_medium;
 extern Texture2D volume_loud;
 
-// interface
+// objects
 extern Rectangle ball;
 extern Rectangle home;
 extern Rectangle visitor;
 
+// interface
 extern Rectangle singleplayerButton;
 extern Rectangle multiplayerButton;
 
@@ -58,11 +60,19 @@ extern int countdown;
 extern int velocityX;
 extern int velocityY;
 
+extern int homeSpeed;
+extern int visitorSpeed;
+
 extern int homeScore;
 extern int visitorScore;
 
 extern int homeMana;
 // extern int visitorMana;
+
+extern int homeSkillDurationLeft;
+// extern int visitorSkillDurationLeft;
+
+extern Skills CurrentSkillInUse;
 
 // meta states
 extern GameState CurrentGameState;
@@ -75,3 +85,4 @@ void drawVolumeIcon();
 void updateVolumeAndVolumeIcon();
 void drawWinnerOrInstruction(int status);
 void increaseMana(int& mana);
+bool depleteMana(int& mana, int depleteAmount);

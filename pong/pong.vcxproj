@@ -185,6 +185,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="multiplayer.cpp" />
     <ClCompile Include="singleplayer.cpp" />
+    <ClCompile Include="skills.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="difficultyMenu.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="multiplayer.h" />
     <ClInclude Include="singleplayer.h" />
+    <ClInclude Include="skills.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
