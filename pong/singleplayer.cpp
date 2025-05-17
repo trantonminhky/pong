@@ -91,15 +91,14 @@ void drawSingleplayerScreen() {
 	DrawRectangleRec(visitor, WHITE);
 
 	// mana
-	DrawRectangleLinesEx({ 900, 950, 200, 30 }, 3, WHITE);
-	DrawRectangle(900, 950, homeMana * 2, 30, WHITE);
+	drawManaBoard();
 
 	// scores
 	DrawText(std::to_string(homeScore).c_str(), 600, 950, 50, WHITE);
 	DrawText(std::to_string(visitorScore).c_str(), 600, 50, 50, WHITE);
 
 	// debugging
-	DrawText(std::to_string(homeSpeed).c_str(), 100, 500, 50, WHITE);
+	// DrawText(std::to_string(abs(sin(4 * GetTime()))).c_str(), 100, 500, 50, WHITE);
 
 	// countdown and announcements
 	if (countdown >= 0) {
@@ -107,6 +106,21 @@ void drawSingleplayerScreen() {
 		drawWinnerOrInstruction(winnerState);
 	}
 	else DrawRectangleRec(ball, WHITE); // draw projectile
+}
+
+void drawManaBoard() {
+	float alpha;
+	if (homeMana < 50) {
+		alpha = 1;
+	}
+	else if (homeMana >= 50 && homeMana != 100) {
+		alpha = abs(sin(4 * GetTime()));
+	}
+	else {
+		alpha = abs(sin(8 * GetTime()));
+	}
+	DrawRectangleLinesEx({ 900, 950, 200, 30 }, 3, WHITE);
+	DrawRectangle(900, 950, homeMana * 2, 30, ColorAlpha(WHITE, alpha));
 }
 
 void redirectBall() {
