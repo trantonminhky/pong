@@ -18,6 +18,12 @@ enum class VolumeState {
 	LOUD
 };
 
+class Instance {
+public:
+	virtual void updateSingleplayerScreen(int failureRate) = 0;
+	virtual void drawSingleplayerScreen() = 0;
+};
+
 // assets
 extern Sound hitsoundWeak;
 extern Sound hitsoundStrong;
@@ -82,6 +88,7 @@ extern Skills CurrentSkillInUse;
 extern GameState CurrentGameState;
 extern VolumeState CurrentVolumeState;
 extern lastSavedState LastSavedState;
+extern Instance* GameInstance;
 
 bool isWithinX(int curX, int windowSizeX);
 void resetState();

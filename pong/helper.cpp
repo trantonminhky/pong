@@ -29,6 +29,7 @@ void resetState() {
 	visitor = { 525, 100, 150, 10 };
 
 	LastSavedState = { 0 };
+	delete GameInstance;
 
 	CurrentSkillInUse = Skills::NONE;
 }
@@ -188,7 +189,10 @@ Texture2D volume_medium = { 0 };
 Texture2D volume_loud = { 0 };
 
 int winnerState = 0;
+
 GameState CurrentGameState = GameState::LOADING;
 VolumeState CurrentVolumeState = VolumeState::MEDIUM;
+Instance* GameInstance = nullptr;
+
 lastSavedState LastSavedState = { 0 };
 Skills CurrentSkillInUse = Skills::NONE;

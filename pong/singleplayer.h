@@ -1,11 +1,22 @@
 #pragma once
+#include "helper.h"
 
-void updateSingleplayerScreen(int failureRate);
-void drawSingleplayerScreen();
-void drawManaBoard();
-void snapBallOutOfHome();
-void snapBallOutOfVisitor();
-bool isStuck(Rectangle paddle);
-void redirectBall();
-void enactCurrentSkill();
-void drawCurrentSkill();
+class SingleplayerInstance : public Instance {
+public:
+	virtual void updateSingleplayerScreen(int failureRate);
+	virtual void drawSingleplayerScreen();
+
+private:
+	void listenInput();
+	void controlVisitorPaddle(int failureRate);
+	void playSoundAndRedirect();
+	void determineWinnerAndResetState();
+	void moveBall();
+	void drawManaBoard();
+	void redirectBall();
+	void snapBallOutOfHome();
+	void snapBallOutOfVisitor();
+	bool isStuck(Rectangle paddle);
+	void enactCurrentSkill();
+	void drawCurrentSkill();
+};

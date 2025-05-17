@@ -40,15 +40,19 @@ int main() {
 	CurrentGameState = GameState::MENU;
 
 	while (!WindowShouldClose()) {
+		if (IsKeyPressed(KEY_ESCAPE)) {
+			CurrentGameState = GameState::MENU;
+			resetState();
+		}
+
 		BeginDrawing();
-		if (CurrentSkillInUse != Skills::HOME_ULT) UpdateMusicStream(backgroundMusic);
+		UpdateMusicStream(backgroundMusic);
 		ClearBackground(BLACK);
 		drawVolumeIcon();
 		updateVolumeAndVolumeIcon();
 
 		switch (CurrentGameState) {
 		case GameState::MENU:
-			resetState();
 			updateMenuScreen();
 			drawMenuScreen();
 			break;
@@ -59,18 +63,18 @@ int main() {
 			break;
 
 		case GameState::SINGLEPLAYER_EASY: // singleplayer easy
-			updateSingleplayerScreen(50);
-			drawSingleplayerScreen();
+			GameInstance->updateSingleplayerScreen(50);
+			GameInstance->drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_MEDIUM: // singleplayer medium
-			updateSingleplayerScreen(30);
-			drawSingleplayerScreen();
+			GameInstance->updateSingleplayerScreen(30);
+			GameInstance->drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_HARD: // singleplayer hard
-			updateSingleplayerScreen(10);
-			drawSingleplayerScreen();
+			GameInstance->updateSingleplayerScreen(10);
+			GameInstance->drawSingleplayerScreen();
 			break;
 
 		case GameState::MULTIPLAYER: // multiplayer
