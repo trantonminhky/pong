@@ -8,3 +8,4 @@ void snapBallOutOfVisitor();
 bool isStuck(Rectangle paddle);
 void redirectBall();
 void enactCurrentSkill();
+void drawCurrentSkill();

@@ -41,7 +41,7 @@ int main() {
 
 	while (!WindowShouldClose()) {
 		BeginDrawing();
-		UpdateMusicStream(backgroundMusic);
+		if (CurrentSkillInUse != Skills::HOME_ULT) UpdateMusicStream(backgroundMusic);
 		ClearBackground(BLACK);
 		drawVolumeIcon();
 		updateVolumeAndVolumeIcon();

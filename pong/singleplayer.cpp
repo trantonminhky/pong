@@ -120,6 +120,8 @@ void drawSingleplayerScreen() {
 		drawWinnerOrInstruction(winnerState);
 	}
 	else DrawRectangleRec(ball, WHITE); // draw projectile
+
+	drawCurrentSkill();
 }
 
 void drawManaBoard() {
@@ -165,6 +167,14 @@ void enactCurrentSkill() {
 
 	case Skills::HOME_ULT:
 		Ult::home(homeSkillDurationLeft);
+		break;
+	}
+}
+
+void drawCurrentSkill() {
+	switch (CurrentSkillInUse) {
+	case Skills::HOME_ULT:
+		DrawRectangle(0, 0, 1200, 1000, ColorAlpha(WHITE, 0.2));
 		break;
 	}
 }
