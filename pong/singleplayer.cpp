@@ -41,9 +41,13 @@ void updateSingleplayerScreen(int failureRate) {
 		if (CheckCollisionRecs(ball, home)) {
 			redirectBall();
 			increaseMana(homeMana);
+
+			if (isStuck(home)) snapBallOutOfHome();
 		}
 		else if (CheckCollisionRecs(ball, visitor)) {
 			redirectBall();
+
+			if (isStuck(visitor)) snapBallOutOfVisitor();
 		}
 
 		if (ball.y < 0) { // home wins
@@ -129,6 +133,18 @@ void redirectBall() {
 
 	if (abs(velocityX) >= 15) PlaySound(hitsoundStrong);
 	else PlaySound(hitsoundWeak);
+}
+
+void snapBallOutOfHome() {
+	ball.y = 872;
+}
+
+void snapBallOutOfVisitor() {
+	ball.y = 128;
+}
+
+bool isStuck(Rectangle paddle) {
+	return ((paddle.y < ball.y + 5 && ball.y + 15 < paddle.y + paddle.height) && (paddle.x < ball.x + 10 && ball.x + 10 < paddle.x + paddle.width));
 }
 
 void enactCurrentSkill() {
