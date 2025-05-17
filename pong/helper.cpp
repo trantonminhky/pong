@@ -28,6 +28,8 @@ void resetState() {
 	home = { 525, 900, 150, 10 };
 	visitor = { 525, 100, 150, 10 };
 
+	LastSavedState = { 0 };
+
 	CurrentSkillInUse = Skills::NONE;
 }
 
@@ -89,6 +91,7 @@ void init() {
 	explosion = LoadSound("./assets/sfx/explosion.wav");
 	failsound = LoadSound("./assets/sfx/skill_use_fail.wav");
 	subsound = LoadSound("./assets/sfx/sub.wav");
+	ultsound = LoadSound("./assets/sfx/ult.wav");
 
 	icon = LoadImage("./assets/sprites/window_icon.png");
 
@@ -174,6 +177,7 @@ Sound hitsoundMenuStrong = { 0 };
 Sound explosion = { 0 };
 Sound failsound = { 0 };
 Sound subsound = { 0 };
+Sound ultsound = { 0 };
 
 Music backgroundMusic = { 0 };
 Image icon = { 0 };
@@ -186,4 +190,5 @@ Texture2D volume_loud = { 0 };
 int winnerState = 0;
 GameState CurrentGameState = GameState::LOADING;
 VolumeState CurrentVolumeState = VolumeState::MEDIUM;
+lastSavedState LastSavedState = { 0 };
 Skills CurrentSkillInUse = Skills::NONE;

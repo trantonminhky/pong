@@ -26,6 +26,7 @@ extern Sound hitsoundMenuStrong;
 extern Sound explosion;
 extern Sound failsound;
 extern Sound subsound;
+extern Sound ultsound;
 
 extern Music backgroundMusic;
 
@@ -80,6 +81,7 @@ extern Skills CurrentSkillInUse;
 // meta states
 extern GameState CurrentGameState;
 extern VolumeState CurrentVolumeState;
+extern lastSavedState LastSavedState;
 
 bool isWithinX(int curX, int windowSizeX);
 void resetState();

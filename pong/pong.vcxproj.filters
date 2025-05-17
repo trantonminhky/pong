@@ -90,6 +90,15 @@
     <Media Include="assets\music\lolk_x.mp3">
       <Filter>Resource Files\music</Filter>
     </Media>
+    <Media Include="assets\sfx\skill_use_fail.wav">
+      <Filter>Resource Files\sfx</Filter>
+    </Media>
+    <Media Include="assets\sfx\sub.wav">
+      <Filter>Resource Files\sfx</Filter>
+    </Media>
+    <Media Include="assets\sfx\ult.wav">
+      <Filter>Resource Files\sfx</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\sprites\volume_quiet.png">

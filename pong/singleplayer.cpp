@@ -26,6 +26,16 @@ void updateSingleplayerScreen(int failureRate) {
 				PlaySound(failsound);
 			}
 		}
+		if (IsKeyPressed(KEY_W)) { // use ult
+			if (homeSkillDurationLeft <= 0 && depleteMana(homeMana, 100)) {
+				homeSkillDurationLeft = HOME_ULT_DURATION;
+				CurrentSkillInUse = Skills::HOME_ULT;
+				PlaySound(ultsound);
+			}
+			else {
+				PlaySound(failsound);
+			}
+		}
 
 		if (ball.x < visitor.x + visitor.width / 4) {
 			visitor.x -= (visitor.x >= 0 && (random >= failureRate)) ? visitorSpeed : 0;
@@ -151,6 +161,10 @@ void enactCurrentSkill() {
 	switch (CurrentSkillInUse) {
 	case Skills::HOME_SUB:
 		Sub::home(homeSkillDurationLeft);
+		break;
+
+	case Skills::HOME_ULT:
+		Ult::home(homeSkillDurationLeft);
 		break;
 	}
 }

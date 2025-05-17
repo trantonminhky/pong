@@ -205,6 +205,9 @@
     <Media Include="assets\sfx\hit_weak.wav" />
     <Media Include="assets\sfx\menu_hit_strong.wav" />
     <Media Include="assets\sfx\menu_hit_weak.wav" />
+    <Media Include="assets\sfx\skill_use_fail.wav" />
+    <Media Include="assets\sfx\sub.wav" />
+    <Media Include="assets\sfx\ult.wav" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\sprites\volume_loud.png" />
