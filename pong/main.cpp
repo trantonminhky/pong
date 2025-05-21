@@ -46,43 +46,54 @@ int main() {
 		}
 
 		BeginDrawing();
-		UpdateMusicStream(backgroundMusic);
 		ClearBackground(BLACK);
 		drawVolumeIcon();
 		updateVolumeAndVolumeIcon();
 
 		switch (CurrentGameState) {
 		case GameState::MENU:
+			UpdateMusicStream(backgroundMusic);
 			updateMenuScreen();
 			drawMenuScreen();
 			break;
 
 		case GameState::DIFFICULTY_MENU:
+			UpdateMusicStream(backgroundMusic);
 			updateDifficultyMenuScreen();
 			drawDifficultyMenuScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_EASY: // singleplayer easy
-			GameInstance->updateSingleplayerScreen(50);
+			UpdateMusicStream(backgroundMusic);
+			GameInstance->updateSingleplayerScreen(50, stageElapsedTime);
 			GameInstance->drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_MEDIUM: // singleplayer medium
-			GameInstance->updateSingleplayerScreen(30);
+			UpdateMusicStream(backgroundMusic);
+			GameInstance->updateSingleplayerScreen(30, stageElapsedTime);
 			GameInstance->drawSingleplayerScreen();
 			break;
 
 		case GameState::SINGLEPLAYER_HARD: // singleplayer hard
-			GameInstance->updateSingleplayerScreen(10);
+			UpdateMusicStream(backgroundMusic);
+			GameInstance->updateSingleplayerScreen(10, stageElapsedTime);
+			GameInstance->drawSingleplayerScreen();
+			break;
+
+		case GameState::STAGE_1:
+			GameInstance->updateSingleplayerScreen(30, stageElapsedTime);
 			GameInstance->drawSingleplayerScreen();
 			break;
 
 		case GameState::MULTIPLAYER: // multiplayer
+			UpdateMusicStream(backgroundMusic);
 			updateMultiplayerScreen();
 			drawMultiplayerScreen();
 			break;
 
 		default:
+			EndDrawing();
 			UnloadMusicStream(backgroundMusic);
 			CloseAudioDevice();
 			CloseWindow();

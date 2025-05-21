@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include <random>
+#include <string>
 #include "helper.h"
 #include "skills.h"
 
@@ -32,6 +33,8 @@ void resetState() {
 	delete GameInstance;
 
 	CurrentSkillInUse = Skills::NONE;
+	stageElapsedTime = 0;
+	CurrentStageState = StageState::STAGE_OPENING;
 }
 
 void drawVolumeIcon() {
@@ -85,6 +88,7 @@ void updateVolumeAndVolumeIcon() {
 
 void init() {
 	backgroundMusic = LoadMusicStream("./assets/music/lolk_x.mp3");
+	stage1Music = LoadMusicStream("./assets/music/wbawc_5.mp3");
 	hitsoundWeak = LoadSound("./assets/sfx/hit_weak.wav");
 	hitsoundStrong = LoadSound("./assets/sfx/hit_strong.wav");
 	hitsoundMenuWeak = LoadSound("./assets/sfx/menu_hit_weak.wav");
@@ -102,6 +106,7 @@ void init() {
 	volume_loud = LoadTexture("./assets/sprites/volume_loud.png");
 
 	backgroundMusic.looping = true;
+	stage1Music.looping = true;
 	SetWindowIcon(icon);
 }
 
@@ -145,6 +150,7 @@ bool depleteMana(int& mana, int depleteAmount) {
 
 Rectangle singleplayerButton = { 350, 500, 500, 100 };
 Rectangle multiplayerButton = { 350, 700, 500, 100 };
+Rectangle loremIpsumButton = { 950, 500, 100, 100 };
 
 Rectangle easyButton = { 350, 400, 500, 100 };
 Rectangle normalButton = { 350, 600, 500, 100 };
@@ -166,6 +172,7 @@ int visitorScore = 0;
 int homeMana = 0;
 
 int homeSkillDurationLeft = 0;
+float stageElapsedTime = 0;
 
 Rectangle ball = { 590, 490, 20, 20 };
 Rectangle home = { 525, 900, 150, 10 };
@@ -181,6 +188,7 @@ Sound subsound = { 0 };
 Sound ultsound = { 0 };
 
 Music backgroundMusic = { 0 };
+Music stage1Music = { 0 };
 Image icon = { 0 };
 
 Texture2D volume_mute = { 0 };
@@ -192,6 +200,7 @@ int winnerState = 0;
 
 GameState CurrentGameState = GameState::LOADING;
 VolumeState CurrentVolumeState = VolumeState::MEDIUM;
+StageState CurrentStageState = StageState::STAGE_OPENING;
 Instance* GameInstance = nullptr;
 
 lastSavedState LastSavedState = { 0 };

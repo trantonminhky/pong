@@ -22,6 +22,9 @@
     <Filter Include="Resource Files\music">
       <UniqueIdentifier>{2195182a-9336-4671-bbdd-514ca039e6bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Stages Source Files">
+      <UniqueIdentifier>{4ea23013-e319-494e-beff-2066b5102c29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +48,9 @@
     <ClCompile Include="skills.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stages\stage_1.cpp">
+      <Filter>Source Files\Stages Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="multiplayer.h">
@@ -63,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="skills.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stages\stages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

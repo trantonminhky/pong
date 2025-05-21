@@ -1,5 +1,6 @@
 #pragma once
 #include "skills.h"
+#include <string>
 
 enum class GameState {
 	LOADING,
@@ -8,7 +9,14 @@ enum class GameState {
 	SINGLEPLAYER_EASY,
 	SINGLEPLAYER_MEDIUM,
 	SINGLEPLAYER_HARD,
-	MULTIPLAYER
+	MULTIPLAYER,
+	STAGE_1
+};
+
+enum class StageState {
+	STAGE_OPENING,
+	STAGE_SUMMON,
+	STAGE_BOSS
 };
 
 enum class VolumeState {
@@ -20,7 +28,7 @@ enum class VolumeState {
 
 class Instance {
 public:
-	virtual void updateSingleplayerScreen(int failureRate) = 0;
+	virtual void updateSingleplayerScreen(int failureRate, float &elapsed) = 0;
 	virtual void drawSingleplayerScreen() = 0;
 };
 
@@ -35,6 +43,7 @@ extern Sound subsound;
 extern Sound ultsound;
 
 extern Music backgroundMusic;
+extern Music stage1Music;
 
 extern Image icon;
 
@@ -51,6 +60,7 @@ extern Rectangle visitor;
 // interface
 extern Rectangle singleplayerButton;
 extern Rectangle multiplayerButton;
+extern Rectangle loremIpsumButton;
 
 extern Rectangle easyButton;
 extern Rectangle normalButton;
@@ -63,6 +73,7 @@ extern Rectangle volumeHitbox;
 // 22 - multiplayer instruction
 // 1 - P1 wins
 // 2 - P2 wins
+// 3 - in progress
 extern int winnerState;
 
 extern int countdown;
@@ -83,11 +94,13 @@ extern int homeSkillDurationLeft;
 // extern int visitorSkillDurationLeft;
 
 extern Skills CurrentSkillInUse;
+extern float stageElapsedTime;
 
 // meta states
 extern GameState CurrentGameState;
 extern VolumeState CurrentVolumeState;
 extern lastSavedState LastSavedState;
+extern StageState CurrentStageState;
 extern Instance* GameInstance;
 
 bool isWithinX(int curX, int windowSizeX);

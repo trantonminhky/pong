@@ -4,8 +4,9 @@
 #include "skills.h"
 #include "singleplayer.h"
 
-void SingleplayerInstance::updateSingleplayerScreen(int failureRate) {
+void SingleplayerInstance::updateSingleplayerScreen(int failureRate, float &elapsed) {
 	if (countdown < 0) {
+		elapsed += GetFrameTime();
 		// reads the current skills in usage and executes the relevant function
 		enactCurrentSkill();
 
@@ -45,7 +46,7 @@ void SingleplayerInstance::drawSingleplayerScreen() {
 	DrawText(std::to_string(visitorScore).c_str(), 600, 50, 50, WHITE);
 
 	// debugging
-	// DrawText(std::to_string(abs(sin(4 * GetTime()))).c_str(), 100, 500, 50, WHITE);
+	DrawText(std::to_string(stageElapsedTime).c_str(), 100, 500, 50, WHITE);
 
 	// countdown and announcements
 	if (countdown >= 0) {

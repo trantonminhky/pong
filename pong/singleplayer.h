@@ -3,7 +3,7 @@
 
 class SingleplayerInstance : public Instance {
 public:
-	virtual void updateSingleplayerScreen(int failureRate);
+	virtual void updateSingleplayerScreen(int failureRate, float &elapsed);
 	virtual void drawSingleplayerScreen();
 
 private:
